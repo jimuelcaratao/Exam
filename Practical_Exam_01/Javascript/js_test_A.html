@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var sentence = "TheQuickBrownFoxJumpsOverTheLazyDog";
+
+      //capitalize function then lower case the rest
+      function capitalize(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+      }
+
+      // set visible output
+      var modified_sentence = capitalize(
+        sentence.replace(/([a-zA-Z])([A-Z])([a-z])/g, "$1 $2$3")
+      );
+      // get visible output
+      document.write(modified_sentence);
+
+      // console log output
+      console.log(
+        capitalize(sentence.replace(/([a-zA-Z])([A-Z])([a-z])/g, "$1 $2$3"))
+      );
+    </script>
+  </body>
+</html>

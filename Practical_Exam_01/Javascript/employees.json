@@ -1,0 +1,21 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "gender": { "male": true, "female": false },
+      "birthday": "1990-05-07",
+      "knownLanguage": ["English", "Japanese", "Chinese"]
+    },
+
+    {
+      "id": "2",
+      "firstName": "Lina",
+      "lastName": "Art",
+      "gender": { "male": false, "female": true },
+      "birthday": "1994-08-05",
+      "knownLanguage": ["English", "Japanese"]
+    }
+  ]
+}

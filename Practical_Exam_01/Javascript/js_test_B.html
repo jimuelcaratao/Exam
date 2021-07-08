@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+
+      input[type="text"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
+
+      input[type="submit"] {
+        background-color: #04aa6d;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Contact Form</h3>
+
+    <div class="container">
+      <form action="/action_page.php">
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          id="fname"
+          name="firstname"
+          placeholder="Your name.."
+        />
+
+        <label for="lname">Last Name</label>
+        <input
+          type="text"
+          id="lname"
+          name="lastname"
+          placeholder="Your last name.."
+        />
+
+        <label for="lname">Birthday</label>
+        <input
+          type="date"
+          id="bday"
+          name="bday"
+          placeholder="Your last name.."
+        />
+
+        <!-- Language -->
+        <p>Language/s:</p>
+        <input type="checkbox" id="english" name="english" value="English" />
+        <label for="english"> English</label><br />
+        <input type="checkbox" id="japanese" name="japanese" value="Japanese" />
+        <label for="japanese"> Japanese</label><br />
+        <input type="checkbox" id="chinese" name="chinese" value="Chinese" />
+        <label for="chinese"> Chinese</label><br />
+
+        <!-- Gender -->
+        <p>Gender:</p>
+          <input type="radio" id="male" name="male" value="Male" />  
+        <label for="male">Male</label><br />
+         
+        <input type="radio" id="female" name="female" value="Female" />  
+        <label for="female">Female</label><br />
+         
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <script>
+      //   var URL = `http://marvinv.local.com/exam/employees.php`;
+      // created employees URL
+      var URL = `employees.json`;
+
+      // get api url
+      fetch(URL)
+        //get json
+        .then((response) => response.json())
+        .then((data) => {
+          //display the objects
+          console.log(data.employees);
+
+          //get the first
+          var get_last = data.employees[0];
+
+          // set input forms
+          document.getElementById("fname").value = get_last.firstName;
+          document.getElementById("lname").value = get_last.lastName;
+          document.getElementById("bday").value = get_last.birthday;
+
+          // checks if the gender is correct
+          if (get_last.gender.male == true) {
+            document.getElementById("male").checked = true;
+          } else {
+            document.getElementById("female").checked = true;
+          }
+
+          // knownLanguage section has include funtion helper to get if has knownLanguage in the objects
+          if (get_last.knownLanguage.includes("English")) {
+            document.getElementById("english").checked = true;
+          }
+
+          if (get_last.knownLanguage.includes("Japanese")) {
+            document.getElementById("japanese").checked = true;
+          }
+
+          if (get_last.knownLanguage.includes("Chinese")) {
+            document.getElementById("chinese").checked = true;
+          }
+        });
+    </script>
+  </body>
+</html>
